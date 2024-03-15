@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VideoJS Chat Component</title>
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="640" height="360">
+        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            type="video/mp4" />
+    </video>
+    <div id="chat-container" class="vjs-chat" style="display:none;">
+        <div id="chat-messages" class="vjs-chat-messages"></div>
+        <div class="vjs-chat-input-container">
+            <input type="text" id="chat-input" class="vjs-chat-input" placeholder="Введите сообщение" />
+            <button id="chat-send" class="vjs-chat-button">Отправить</button>
+        </div>
+    </div>
+    <script src="https://vjs.zencdn.net/7.10.2/video.js"></script>
+    <script src="chat-plugin.js"></script>
+</body>
+
+</html>
