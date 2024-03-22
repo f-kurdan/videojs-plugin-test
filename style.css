@@ -51,13 +51,15 @@ body {
 .vjs-chat-messages {
     display: flex;
     overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 10px;
     font-size: 14px;
     max-height: 200px;
     padding: 5px 2px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 .vjs-chat-input-container {
