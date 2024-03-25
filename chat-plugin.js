@@ -13,6 +13,7 @@ videojs.registerPlugin('chat', function (options) {
             // Отображение сообщения в чате
             var messageContainer = document.createElement('div');
             messageContainer.textContent = message;
+            messageContainer.classList.add('vjs-chat-message');
             chatMessages.appendChild(messageContainer);
 
             // Сохранение сообщений в локальном хранилище
@@ -28,7 +29,7 @@ videojs.registerPlugin('chat', function (options) {
     };
 
     // Добавление контейнера чата в плеер
-    player.el().appendChild(chatContainer);
+    // player.el().appendChild(chatContainer);
 
     // Показ чата при начале воспроизведения
     player.on('play', function () {
@@ -40,6 +41,7 @@ videojs.registerPlugin('chat', function (options) {
     savedMessages.forEach(function (message) {
         var messageContainer = document.createElement('div');
         messageContainer.textContent = message;
+        messageContainer.classList.add('vjs-chat-message');
         chatMessages.appendChild(messageContainer);
     });
 });

@@ -12,6 +12,7 @@
 ::-webkit-scrollbar-thumb {
     background: gray;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Handle on hover */
@@ -20,31 +21,29 @@
 }
 
 body {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    padding-top: 50px;
     background-color: #f1f1f1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.video-js {
-    position: relative;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    height: 90vh;
+    width: 100%;
 }
 
 .vjs-chat {
-    position: absolute;
-    bottom: 35px;
-    right: 20px;
     width: 30%;
+    height: fit-content;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5px;
     color: #fff;
     padding: 10px;
     display: none;
-    flex-direction: column;
     overflow-y: auto;
 }
 
@@ -56,10 +55,15 @@ body {
     flex-direction: column;
     gap: 10px;
     margin-bottom: 10px;
-    font-size: 14px;
-    max-height: 200px;
+    font-size: 16px;
+    max-height: 80dvh;
     padding: 5px 2px;
     border-bottom: 1px solid #ccc;
+}
+
+.vjs-chat-message {
+    padding: 5px 2px;
+    border-bottom: 1px solid rgb(81, 81, 81);
 }
 
 .vjs-chat-input-container {
@@ -71,7 +75,7 @@ body {
 }
 
 .vjs-chat-input {
-    width: calc(100% - 90px);
+    width: 100px;
     min-width: 80px;
     flex-grow: 1;
     padding: 5px;
@@ -79,7 +83,7 @@ body {
     border-radius: 5px;
     border: none;
     outline: none;
-    height: 30px;
+    height: 25px;
 }
 
 .vjs-chat-button {
@@ -97,8 +101,17 @@ body {
 
 
 /* Для адаптивности чата по ширине */
-@media (max-width: 600px) {
+@media (max-width: 1100px) {
+    body {
+        row-gap: 20px;
+        column-gap: 0px;
+    }
+
     .vjs-chat {
-        width: 50%;
+        width: 620px;
+    }
+
+    .vjs-chat-messages {
+        max-height: 30dvh;
     }
 }
