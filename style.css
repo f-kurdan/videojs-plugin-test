@@ -89,9 +89,13 @@
 @media (max-width: 1000px) {
     .vjs-chat {
         width: inherit;
-        bottom: -30%;
+        top: 360px;
         right: auto;
         left: auto;
+    }
+
+    .vjs-chat-messages {
+        max-height: 40vh;
     }
 }
 
