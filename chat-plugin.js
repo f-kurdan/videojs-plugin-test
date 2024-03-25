@@ -28,8 +28,8 @@ videojs.registerPlugin('chat', function (options) {
         }
     };
 
-    // Добавление контейнера чата в плеер
-    // player.el().appendChild(chatContainer);
+    //Добавление контейнера чата в плеер
+    player.el().appendChild(chatContainer);
 
     // Показ чата при начале воспроизведения
     player.on('play', function () {
