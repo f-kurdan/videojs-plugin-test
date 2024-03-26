@@ -1,25 +1,45 @@
 videojs.registerPlugin('chat', function (options) {
-    var player = this;
+    const player = this;
+    var playerId = player.id(); 
+    var storageKey = 'vjs-chat-messages-' + playerId;
+    
+    const chatContainer = document.createElement('div');
+    chatContainer.classList.add('vjs-chat');
 
-    var chatContainer = document.getElementById('chat-container');
-    var chatMessages = document.getElementById('chat-messages');
-    var chatInput = document.getElementById('chat-input');
-    var chatButton = document.getElementById('chat-send');
+    const chatMessages = document.createElement('div');
+    chatMessages.classList.add('vjs-chat-messages');
+    chatContainer.appendChild(chatMessages);
+
+    const chatInput = document.createElement('input');
+    chatInput.classList.add('vjs-chat-input');
+    chatInput.type = 'text';
+    chatInput.placeholder = 'Введите сообщение';
+
+    const chatButton = document.createElement('button');
+    chatButton.classList.add('vjs-chat-button');
+    chatButton.textContent = 'Отправить';
+
+    const inputContainer = document.createElement('div');
+    inputContainer.classList.add('vjs-chat-input-container');
+    inputContainer.appendChild(chatInput);
+    inputContainer.appendChild(chatButton);
+
+    chatContainer.appendChild(inputContainer);
 
     // Обработчик клика на кнопку отправки
     chatButton.onclick = function () {
-        var message = chatInput.value.trim();
+        const message = chatInput.value.trim();
         if (message) {
             // Отображение сообщения в чате
-            var messageContainer = document.createElement('div');
+            const messageContainer = document.createElement('div');
             messageContainer.textContent = message;
             messageContainer.classList.add('vjs-chat-message');
             chatMessages.appendChild(messageContainer);
 
             // Сохранение сообщений в локальном хранилище
-            var messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+            const messages = JSON.parse(localStorage.getItem(storageKey) || '[]');
             messages.push(message);
-            localStorage.setItem('chatMessages', JSON.stringify(messages));
+            localStorage.setItem(storageKey, JSON.stringify(messages));
 
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
@@ -37,9 +57,9 @@ videojs.registerPlugin('chat', function (options) {
     });
 
     // Загрузка сохраненных сообщений из локального хранилища
-    var savedMessages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+    const savedMessages = JSON.parse(localStorage.getItem(storageKey) || '[]');
     savedMessages.forEach(function (message) {
-        var messageContainer = document.createElement('div');
+        const messageContainer = document.createElement('div');
         messageContainer.textContent = message;
         messageContainer.classList.add('vjs-chat-message');
         chatMessages.appendChild(messageContainer);
@@ -47,5 +67,5 @@ videojs.registerPlugin('chat', function (options) {
 });
 
 // Инициализация плагина чата после создания плеера
-var player = videojs('my-video');
+const player = videojs('my-video');
 player.chat();
