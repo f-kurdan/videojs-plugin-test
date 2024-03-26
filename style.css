@@ -19,6 +19,13 @@
     background: #b30000;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40vh;
+}
+
 .video-js {
     position: relative;
 }
@@ -95,7 +102,7 @@
     }
 
     .vjs-chat-messages {
-        max-height: 40vh;
+        max-height: 30vh;
     }
 }
 
